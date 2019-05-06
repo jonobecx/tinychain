@@ -2,26 +2,66 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"/>
-    <style>
-        .hide {
-            display: none;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
 </head>
 
 <body>
-    <div class="row">
-        <div class="container">
-            <h1>Basic Blockchain</h1>
-            <p>Create your own blockchain! Share it with your friends!</p>
-            <p>This interface manages the chain and provides a simple wallet</p>
-        </div>
+    <div class="container">
+        <h1>TinyChain</h1>
+        <p>Create your own blockchain! Share it with your friends!</p>
+        <p>This interface manages the chain and provides a simple wallet</p>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <div class="container">
+        <h2>Chain</h2>
+        <h3>Settings</h3>
+        <form method="POST" action="/settings">
+            <fieldset>
+                <p>
+                    <label for="chain_url">Chain URL</label>
+                    <input type="text" id="chain_url" name="chain_url" value="/chain.json" />
+                    <small>The URL to download (GET) and update (POST) the blockchain to.</small>
+                </p>
+                <input type="submit" value="Save">
+            </fieldset>
+        </form>
+    </div>
+    <div class="container">
+        <h2>Block</h2>
+        <h3>Information</h3>
+        <dl>
+            <dt>Hash</dt>
+            <dd></dd>
+            <dt>Previous</dt>
+            <dd></dd>
+        </dl>
+        <h3>Balances</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="balances"></tbody>
+        </table>
+        <h3>Transactions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>Amount</th>
+                    <th>To</th>
+                </tr>
+            </thead>
+            <tbody id="transactions"></tbody>
+        </table>
+    </div>
+
     <script src="index.js"></script>
 </body>
 

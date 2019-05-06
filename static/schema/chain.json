@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://cenetex.com/tinychain.schema.json",
+    "description": "JSON Schema for a TinyChain",
+    "type": "object",
+    "properties": {
+        "blocks": {
+            "type": "array",
+            "items": { "$ref": "#block" }
+        }
+    },
+    "definitions": {
+        "block": {
+            "$id": "#block",
+            "properties": {
+                "id": { "$ref": "#hash" },
+                "previous": { "$ref": "#hash" },
+                "transactions": {
+                    "type": "array",
+                    "items": {"$ref": "#transaction" }
+                },
+                "balances": {
+                    "type": "array",
+                    "items": {"$ref": "#balance" }
+                }
+            }
+        },
+        "hash": {
+            "$id": "#hash",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_]{64}$"
+        },
+        "address": {
+            "$id": "#address",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_]{64}$"
+        },
+        "balance": {
+            "$id": "#balance",
+            "type":"object",
+            "required": ["address", "amount"],
+            "properties": {
+                "address": { "$ref": "#address" },
+                "amount": {"type": "number"}
+            }
+        },
+        "transaction": {
+            "$id": "#transaction",
+            "type": "object",
+            "required": ["to", "from", "amount"],
+            "properties": {
+                "to": { "$ref": "#address" },
+                "from": { "$ref": "#address" },
+                "amount": { "type": "number" }
+            }
+        }
+    }
+}

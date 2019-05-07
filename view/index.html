@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">TinyChain</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" id="node-tab" data-toggle="tab" href="#node" role="tab">Node</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="chain-tab" data-toggle="tab" href="#chain" role="tab">Chain</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="wallet-tab" data-toggle="tab" href="#wallet" role="tab">Wallet</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="tab-content" id="myTabContent">
+            <!-- Node -->
+            <div class="tab-pane fade show active" id="node" role="tabpanel" aria-labelledby="node-tab">
+                <div class="container">
+                    <h1>Node</h1>
+                    <h2>Transaction Buffer</h2>
+                    <h2>Peer Nodes</h2>
+                    <h2>Mining Status</h2>
+                </div>
+            </div>
+            <!-- Chain -->
+            <div class="tab-pane fade" id="chain" role="tabpanel" aria-labelledby="chain-tab">
+                <div class="container">
+                    <h1>Chain</h1>
+                    <dl>
+                        <dt>Length</dt>
+                        <dd></dd>
+                    </dl>
+                    <h2>Block Explorer</h2>
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#genesis">Genesis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#back">Back</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#search">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#forward">Forward</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#latest">Latest</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Wallet -->
+            <div class="tab-pane fade" id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
+                <div class="container">
+                    <h1>Wallet</h1>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

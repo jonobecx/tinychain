@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const blockchain = require('.');
 
 const app = express(),
-    PORT = 3030;
+    PORT = process.env.TINYCHAIN_PORT || 3030;
 
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', express.static('static'));
+app.use('/', express.static('view'));
 
 blockchain.create(chain => {
     app.get('/chains/test', (request, response) => {

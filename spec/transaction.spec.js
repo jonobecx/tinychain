@@ -3,7 +3,7 @@ const forge = require('node-forge');
 const ED25519 = forge.pki.ed25519;
 const decode64 = forge.util.decode64;
 
-const Transaction = require('../lib/transaction').Transaction;
+const Transaction = require('../controller/transaction').Transaction;
 const TEST = {
     TRANSACTION: 'OWEyNDk2NjhjNzc4NWUwZGRiOGE3ODQxNTMxZGFiOWFmMTUwNDVjMWU5YzUyMDI5N2U4MzFmODAxY2VlNDQ5Ziw3ODNlOTk4NTg2ZTk5MzMwZjJlZjFjNTZjMDU5NTAxZGJhMThjOWU5Mjk1YTU0ZjZiMmFkNWY4ZjBmNDE1MTM2LDEwMCxjOTI1MjQ3NGExZThmYjc2YWI5MGExNTk1MmFlMGM4YjlkMmU0NDU2ZWJhZWY4N2FkM2E0OThiZDFjMWE0YTAyMmQwZGZlM2MzYzY5ODhiYWEyOTQ3Njk0OWEyZmZiYmE5NDE0M2Y4NGQ3ZDhjNDU0ZDA1N2U0MWRhNTc0ZTIwMQ==',
     WALLET_SECRET: '3340ce117f542354de8611c491630f77f2e8497d242a75c073d314b65f8d8a9c9a249668c7785e0ddb8a7841531dab9af15045c1e9c520297e831f801cee449f',

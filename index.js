@@ -1,5 +1,5 @@
-const Blockchain = require('./lib/blockchain').Blockchain;
-const Wallet = require('./lib/wallet').Wallet;
+const Blockchain = require('./controller/blockchain').Blockchain;
+const Wallet = require('./controller/wallet').Wallet;
 const forge = require('node-forge');
 
 let chain = null;

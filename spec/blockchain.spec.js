@@ -1,7 +1,7 @@
-const validator = require('../lib/validator');
+const validator = require('../controller/validator');
 
 describe("Blockchain", () => {
-    const Blockchain = require('../lib/blockchain').Blockchain;
+    const Blockchain = require('../controller/blockchain').Blockchain;
     const REWARD_ADDRESS = '30b4481984b1df116434a344be6f085c6397ff9e74f4468f8a8532df5a30d440';
     
     const chain = new Blockchain();

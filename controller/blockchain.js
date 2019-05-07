@@ -1,6 +1,6 @@
 const BLOCK_REWARD = 100;
 
-const crpytography = require('./cryptography.js');
+const crpytography = require('./cryptography');
 MD5 = crpytography.MD5;
 SHA256 = crpytography.SHA256;
 encode64 = crpytography.encode64;

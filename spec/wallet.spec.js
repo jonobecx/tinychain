@@ -1,4 +1,4 @@
-const Wallet = require('../lib/wallet').Wallet;
+const Wallet = require('../controller/wallet').Wallet;
 
 // TRANSACTION TEST VARIABLES
 const WALLET_SECRET = '6d9ea861255db9af9a71d1c1e25d8188a814598a4155e9db3eb05b5a1f0f0bc85c0c6db88972803ff44405ff02d96630e5454958e10beb59940ff2b3f4931a5e';

@@ -6,11 +6,11 @@ const jshint = require('jshint').JSHINT;
 
 describe('Project', () => {
     // Get all the .js files in the ./ and ./lib folders 
-    const files = fs.readdirSync('./lib').map(T => path.join('./lib', T))
+    const files = fs.readdirSync('./controller').map(T => path.join('./controller', T))
         .concat(fs.readdirSync('.').map(T => path.join('.', T))
         .filter(T => path.extname(T) === '.js'));
 
-    it('contains a spec file for each .js file in the root and root/lib folder', () => {
+    it('contains a spec file for each .js file in the root and root/controller folder', () => {
         files.forEach((file, i) => {
             expect(fs.existsSync(path.join('spec', path.basename(file) + '.spec.js')));
         });

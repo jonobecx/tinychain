@@ -1,64 +1,50 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const blockchain = require('.');
+async function main(callback) {
+    // Express initialization
+    const express = require('express');
+    const bodyParser = require('body-parser');
+    const server = null,
+        app = express(),
+        PORT = process.env.TINYCHAIN_PORT || 3030;
 
-const app = express(),
-    PORT = process.env.TINYCHAIN_PORT || 3030;
+    // Bluzelle initialization
+    const { bluzelle } = require('bluzelle');
+    const fs = require('fs-extra');
+    const BLUZELLE_AUTH = 'bluzelle.auth.json';
+    if (!fs.existsSync(BLUZELLE_AUTH)) {
+        throw new Error(BLUZELLE_AUTH + ' does not exist');
+    }
+    const bz = bluzelle(fs.readJSONSync(BLUZELLE_AUTH));
 
-//support parsing of application/x-www-form-urlencoded post data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+    // Node initialization
+    const Node = require('./controller/node').Node;
+    const node = new Node();
 
-app.use('/', express.static('view'));
 
-blockchain.create(chain => {
-    app.get('/chains/test', (request, response) => {
-        response.send(JSON.stringify(chain, null, 4));
+    //support parsing of application/x-www-form-urlencoded post data
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+
+    app.use('/', express.static('view'));
+
+    app.get('/initialize', async () => {
+        await bz.createDB();
     });
 
-    app.put("/chain/mine", (request, response) => {
-        let data = request.body;
-        let counter = 0;
-        let blocks = chain.mine(data.address);
-
-        while (counter < 10000 && blocks === null) {
-            blocks = chain.mine(data.address);
-            counter++;
-        }
-        if (blocks !== null) {
-            chain.blocks = blocks;
-            chain.save();
-            response.send("Successfully mined a block and saved the chainfile!");
-            return;
-        }
-        throw new Error("Failed to mine a block after 1000 attempts!");
+    app.get('/peers', async (request, response) => {
+        response.send(JSON.stringify(node.JSON()));
     });
 
-    app.get("/chain/download", (request, response) => {
-        response.send(chain);
-    });
-    app.get("/chain.json", (request, response) => {
-        response.send(chain);
+    process.on('exit', () => {
+        console.log('shutting down database');
+        bz.close();
     });
 
-    app.get('/wallet/new', (request, response) => {
-        response.send(blockchain.wallet.create());
-    });
-    app.post('/wallet/sign', (request, response) => {
-        let data = request.body;
-        let wallet = blockchain.wallet.load(data.source, data.key);
-        response.send(JSON.stringify(wallet.transaction(data.destination, data.amount)));
-    });
-    app.post('/transaction', (request, response) => {
-        let data = request.body;
-        chain.addTransaction(forge.util.encode64(JSON.stringify({
-            source: data.source,
-            destination: data.destination,
-            signature: data.signature
-        })));
-        response.send(chain);
-    });
-    app.listen(PORT, () => {
+    return app.listen(PORT, callback);
+}
+if (require.main === module) {
+    main(() => {
         console.log(`listening on port ${PORT}`);
-    });
-});
+    }).catch(e => { throw e; });
+}
+
+exports.run = main;
